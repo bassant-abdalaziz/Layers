@@ -1,0 +1,42 @@
+﻿@using Layers.viewModels;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model employeeVM;
+
+<h1>Add New Employee</h1>
+
+<form asp-controller="Employee" asp-action="AddDb" method="post">
+
+    <label asp-for="Fname">First Name</label>
+    <input asp-for="Fname" class="form-control" />
+
+    <label asp-for="Lname">Last Name</label>
+    <input asp-for="Lname" class="form-control" />
+
+    <label asp-for="Minit">Minit Name</label>
+    <input asp-for="Minit" class="form-control" />
+
+    <label>Sex</label>
+    <input id="Male" name="Sex" type="radio" value="Male" />
+    <input id="Female" name="Sex" type="radio" value="Female" />
+
+    <label asp-for="Address">Address</label>
+    <input asp-for="Address" class="form-control" />
+
+    <label asp-for="Salary">Salary</label>
+    <input asp-for="Salary" class="form-control" />
+
+    <label asp-for="BirthDate">BirthDate</label>
+    <input asp-for="BirthDate" class="form-control" />
+
+    <label asp-for="SupervisorSSN">Supervisor</label>
+    <select asp-for="SupervisorSSN" asp-items="ViewBag.emps" class="form-control">
+    <option value="">Choose One</option>
+    </select>
+
+    <input type="submit" value="Add" />
+</form>

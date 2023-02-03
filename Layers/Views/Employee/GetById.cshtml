@@ -1,0 +1,21 @@
+﻿@using Layers.viewModels;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model employeeVM
+
+
+<h1>Employee Data</h1>
+
+<p>Name: @(Model.Fname + " " + Model.Lname + " " + Model.Minit)</p>
+<p>Sex:  @Model.Sex</p>
+<p>Address:  @Model.Address</p>
+<p>Birth Date:  @Model.BirthDate</p>
+<p>Salary:  @Model.Salary</p>
+<p>Super VISORID:  @Model.SupervisorSSN</p>
+
+
+<a asp-controller="Employee" asp-action="Index">All Employees</a>
