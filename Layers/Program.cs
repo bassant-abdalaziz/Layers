@@ -2,6 +2,7 @@ using Layers.Models;
 using Layers.Reposiotries;
 using Layers.ServiceLifeTime;
 using Layers.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,19 @@ builder.Services.AddDbContext<CompanyDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("myCS"));
 });
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<CompanyDBContext>();
+builder.Services.Configure<IdentityOptions>(opts =>
+{
+    opts.Password.RequireNonAlphanumeric = false;
+    opts.Password.RequireDigit = false;
+    opts.Password.RequireLowercase = false;
+    opts.Password.RequireUppercase = false;
+    opts.Password.RequiredLength = 6;
+    opts.User.RequireUniqueEmail = true;
+});
+
 
 builder.Services.AddScoped<IEmployeeRepo, EmployeeRepo>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();

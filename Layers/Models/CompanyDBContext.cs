@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Layers.Models
 {
-    public class CompanyDBContext : DbContext
+    public class CompanyDBContext : IdentityDbContext
     {
 
         public CompanyDBContext()
@@ -15,7 +16,7 @@ namespace Layers.Models
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-J7MPLTV\\SS17;Initial Catalog=Identity;Integrated Security=True;TrustServerCertificate = True;");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-J7MPLTV\\SS17;Initial Catalog=identity;Integrated Security=True;TrustServerCertificate = True;");
             base.OnConfiguring(optionsBuilder);
         }
 
